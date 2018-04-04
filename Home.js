@@ -16,9 +16,21 @@ import {
   Dimensions
 } from 'react-native';
 
+const ImagePicker = require('react-native-image-picker');
 const SCREEN_HEIGHT = Dimensions.get('window').height
-
 import * as Animatable from 'react-native-animatable';
+
+let options = {
+  title: 'Select Avatar',
+  customButtons: [
+    {name: 'fb', title: 'Choose Photo from Facebook'},
+  ],
+  storageOptions: {
+    skipBackup: true,
+    path: 'images'
+  },
+  mediaType: 'photo'
+};
 
 export default class App extends Component<Props> {
   static navigationOptions = {
@@ -59,7 +71,32 @@ export default class App extends Component<Props> {
   showOptionsView = () => {
     this.setState({showOptions: true});
     this.optionsView.fadeIn(500);
-  } 
+  }
+
+  takeAPhoto = () => {
+    ImagePicker.launchCamera(options, (response)  => this.onPickAPhoto(response));
+  }
+
+  selectAPhoto = () => {
+    ImagePicker.launchImageLibrary(options, (response)  => this.onPickAPhoto(response));
+  }
+
+  onPickAPhoto = (response)  => {
+    console.log('Response = ', response);
+
+    if (response.didCancel) {
+      console.log('User cancelled image picker');
+    }
+    else if (response.error) {
+      console.log('ImagePicker Error: ', response.error);
+    }
+    else if (response.customButton) {
+      console.log('User tapped custom button: ', response.customButton);
+    }
+    else {
+      alert(response.path);
+    }
+  }
   
   render() {
     let { loginHeight, showStartButton, showOptions } = this.state;
@@ -98,10 +135,22 @@ export default class App extends Component<Props> {
                   <Animatable.View ref={ref => this.optionsView = ref} style={{ flexDirection: 'column' }}>
                     <View style={{ flexDirection: 'row' }}>
                       <View style={{ flex: 6 }}>
-                      <Text>Take Photo</Text>
+                        <TouchableNativeFeedback
+                          onPress={() => this.takeAPhoto() }
+                          background={TouchableNativeFeedback.Ripple('#C7CCB9')}>
+                          <View style={{paddingHorizontal: 16, paddingVertical: 8 }}>
+                            <Text style={{ color: '#A6A2A2' }}>Take a Photo</Text>
+                          </View>
+                        </TouchableNativeFeedback>
                       </View>
                       <View style={{ flex: 6 }}>
-                      <Text>Select a Picture</Text>
+                        <TouchableNativeFeedback
+                          onPress={() => this.selectAPhoto() }
+                          background={TouchableNativeFeedback.Ripple('#C7CCB9')}>
+                          <View style={{paddingHorizontal: 16, paddingVertical: 8 }}>
+                            <Text style={{ color: '#A6A2A2' }}>Select a Picture</Text>
+                          </View>
+                        </TouchableNativeFeedback>
                       </View>
                     </View>
                     <View style={{ marginTop: 8, marginBottom: 8 }}>
