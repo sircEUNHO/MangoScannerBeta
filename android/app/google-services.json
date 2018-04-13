@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "207007018570",
+    "firebase_url": "https://mangoscannerbeta.firebaseio.com",
+    "project_id": "mangoscannerbeta",
+    "storage_bucket": "mangoscannerbeta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207007018570:android:e254a9669976cb6b",
+        "android_client_info": {
+          "package_name": "com.mangoscannerbeta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207007018570-gd3qvmge5b6fm088rcv70odnlfnjkqth.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVI_JBA7KU8-SiQuuS0y1xB3jqP3AhQXY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,13 +12,23 @@ import {
   Text,
   View
 } from 'react-native';
-import Home from './Home';
+import Home from './pages/Home';
+import DiseasesList from './pages/diseases/List';
+import Disease from './pages/diseases/Indiv';
 
 type Props = {};
 const RootStack = StackNavigator(
   {
     Home: {
       screen: Home,
+    },
+    
+    DiseasesList: {
+      screen: DiseasesList,
+    },
+
+    Disease: {
+      screen: Disease,
     },
   },
   {
