@@ -16,6 +16,8 @@ import Home from './pages/Home';
 import DiseasesList from './pages/diseases/List';
 import Disease from './pages/diseases/Indiv';
 
+
+
 type Props = {};
 const RootStack = StackNavigator(
   {
